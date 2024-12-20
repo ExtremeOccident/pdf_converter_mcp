@@ -3,11 +3,15 @@
  "version": "1.0.3",
  "type": "module",
  "main": "dist/index.js",
+ "files": [
+   "dist"
+ ],
  "bin": {
-   "pdf-converter-mcp": "dist/index.js"
+   "mcp-server-pdf-converter": "dist/index.js"
  },
  "scripts": {
-   "build": "tsc",
+   "build": "tsc && chmod +x dist/index.js",
+   "prepare": "npm run build",
    "start": "node dist/index.js"
  },
  "dependencies": {
