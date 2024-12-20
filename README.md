@@ -6,3 +6,18 @@ An MCP server for converting HTML to PDF.
 
 ```bash
 npm install @mcp/pdf-converter
+
+## Config Example
+
+```json
+{
+  "mcpServers": {
+    "pdf-converter": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mcp/pdf-converter"
+      ]
+    }
+  }
+}
