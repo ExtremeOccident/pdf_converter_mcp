@@ -1,1 +1,27 @@
-aW1wb3J0IHB1cHBldGVlciBmcm9tICdwdXBwZXRlZXInOwoKaW50ZXJmYWNlIENvbnZlcnRlck9wdGlvbnMgewogIGZvcm1hdD86IHN0cmluZzsKICBtYXJnaW4/OiB7CiAgICB0b3A/OiBzdHJpbmc7CiAgICByaWdodD86IHN0cmluZzsKICAgIGJvdHRvbT86IHN0cmluZzsKICAgIGxlZnQ/OiBzdHJpbmc7CiAgfTsKfQoKZXhwb3J0IGNsYXNzIFBERkNvbnZlcnRlciB7CiAgYXN5bmMgY29udmVydChodG1sOiBzdHJpbmcsIG9wdGlvbnM6IENvbnZlcnRlck9wdGlvbnMgPSB7fSkgewogICAgY29uc3QgYnJvd3NlciA9IGF3YWl0IHB1cHBldGVlci5sYXVuY2goeyAKICAgICAgaGVhZGxlc3M6IHRydWUsCiAgICAgIGFyZ3M6IFsnLS1uby1zYW5kYm94J10KICAgIH0pOwoKICAgIHRyeSB7CiAgICAgIGNvbnN0IHBhZ2UgPSBhd2FpdCBicm93c2VyLm5ld1BhZ2UoKTsKICAgICAgYXdhaXQgcGFnZS5zZXRDb250ZW50KGh0bWwsIHsgd2FpdFVudGlsOiAnbmV0d29ya2lkbGUwJyB9KTsKICAgICAgcmV0dXJuIGF3YWl0IHBhZ2UucGRmKHsKICAgICAgICBmb3JtYXQ6IG9wdGlvbnMuZm9ybWF0IHx8ICdBNCcsCiAgICAgICAgbWFyZ2luOiBvcHRpb25zLm1hcmdpbiB8fCB7CiAgICAgICAgICB0b3A6ICcxY20nLAogICAgICAgICAgcmlnaHQ6ICcxY20nLAogICAgICAgICAgYm90dG9tOiAnMWNtJywKICAgICAgICAgIGxlZnQ6ICcxY20nCiAgICAgICAgfSwKICAgICAgICBwcmludEJhY2tncm91bmQ6IHRydWUKICAgICAgfSk7CiAgICB9IGZpbmFsbHkgewogICAgICBhd2FpdCBicm93c2VyLmNsb3NlKCk7CiAgICB9CiAgfQp9Cg==
+import puppeteer from 'puppeteer';
+
+export class PDFConverter {
+  async convert(html: string, options: any = {}) {
+    const browser = await puppeteer.launch({ 
+      headless: true,
+      args: ['--no-sandbox']
+    });
+
+    try {
+      const page = await browser.newPage();
+      await page.setContent(html, { waitUntil: 'networkidle0' });
+      return await page.pdf({
+        format: options.format || 'A4',
+        margin: options.margin || {
+          top: '1cm',
+          right: '1cm',
+          bottom: '1cm',
+          left: '1cm'
+        },
+        printBackground: true
+      });
+    } finally {
+      await browser.close();
+    }
+  }
+}
