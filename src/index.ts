@@ -1,4 +1,4 @@
-import { createMcpServer } from '@mcp/server';
+import { createMcpServer } from '@modelcontextprotocol/server';
 import { PDFConverter } from './converter';
 
 const server = createMcpServer({
