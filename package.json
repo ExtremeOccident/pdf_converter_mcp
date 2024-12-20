@@ -1,18 +1,1 @@
-{
- "name": "pdf-converter-mcp",
- "version": "1.0.3",
- "type": "module",
- "main": "dist/index.js",
- "scripts": {
-   "build": "tsc",
-   "start": "node dist/index.js"
- },
- "dependencies": {
-   "@modelcontextprotocol/sdk": "^1.0.0",
-   "puppeteer": "^21.7.0"
- },
- "devDependencies": {
-   "typescript": "^5.3.3",
-   "@types/node": "^20.10.6"
- }
-}
+{\n \"name\": \"pdf-converter-mcp\",\n \"version\": \"1.0.3\",\n \"type\": \"module\",\n \"main\": \"dist/index.js\",\n \"bin\": \"dist/index.js\",\n \"scripts\": {\n   \"build\": \"tsc\",\n   \"start\": \"node dist/index.js\"\n },\n \"dependencies\": {\n   \"@modelcontextprotocol/sdk\": \"^1.0.0\",\n   \"puppeteer\": \"^21.7.0\"\n },\n \"devDependencies\": {\n   \"typescript\": \"^5.3.3\",\n   \"@types/node\": \"^20.10.6\"\n }\n}
