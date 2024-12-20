@@ -1,9 +1,22 @@
 import { createMcpServer } from '@modelcontextprotocol/sdk';
 import { PDFConverter } from './converter';
 
+interface ConvertInput {
+  html: string;
+  options?: {
+    format?: string;
+    margin?: {
+      top?: string;
+      right?: string;
+      bottom?: string;
+      left?: string;
+    };
+  };
+}
+
 const server = createMcpServer({
   name: 'pdf-converter',
-  version: '1.0.0',
+  version: '1.0.3',
   methods: {
     convert: {
       input: {
@@ -38,7 +51,7 @@ const server = createMcpServer({
     }
   },
   handlers: {
-    convert: async ({ html, options = {} }) => {
+    convert: async ({ html, options = {} }: ConvertInput) => {
       const converter = new PDFConverter();
       const pdf = await converter.convert(html, options);
       return { pdf: pdf.toString('base64') };
