@@ -4,7 +4,7 @@
   "description": "MCP server for PDF conversion",
   "main": "dist/index.js",
   "bin": {
-    "mcp-server-pdf-converter": "./dist/index.js"
+    "mcp-server-pdf": "./dist/index.js"
   },
   "files": [
     "dist",
