@@ -1,7 +1,8 @@
 {
   "name": "pdf-converter-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MCP server for PDF conversion",
+  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "mcp-server-pdf": "./dist/index.js"
@@ -16,7 +17,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@modelcontextprotocol/sdk": "1.0.1",
     "puppeteer": "^21.7.0"
   },
   "devDependencies": {
